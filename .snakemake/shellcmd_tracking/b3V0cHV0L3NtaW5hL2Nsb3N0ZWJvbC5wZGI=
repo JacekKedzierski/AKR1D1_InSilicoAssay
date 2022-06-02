@@ -1,1 +1,1 @@
-src/smina.static -r input/receptor/AKR1D1.pdb -l output/ligands/prep/clostebol.pdb --center_x -7.57 --center_y -17.03 --center_z 33.68 --size_x 15 --size_y 15 --size_z 15 --seed 23 -o output/smina/clostebol.pdb --exhaustiveness 2 --num_modes 10 --cpu 4 > output/log/smina/clostebol.log 
+src/smina.static -r input/receptor/AKR1D1.pdb -l output/ligands/prep/clostebol.pdb --center_x -7.57 --center_y -17.03 --center_z 33.68 --size_x 15 --size_y 15 --size_z 15 --seed 23 -o output/smina/clostebol.pdb --exhaustiveness 2 --num_modes 1 --cpu 4 > output/log/smina/clostebol.log 

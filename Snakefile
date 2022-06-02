@@ -6,7 +6,7 @@ print(ligands)
 
 rule target:
     input:
-        expand("output/poses/{ligand}.pdb",ligand=ligands),
+        expand("output/EvaluatePoses/{ligand}.mae",ligand=ligands)
 
 rule create_smi:
     input:
@@ -44,7 +44,7 @@ rule smina:
         center_z = 33.68,
         boxsize = 15,
         ex = 2,
-        n_poses = 10,
+        n_poses = 1,
     threads: 4
     shell:
         "{params.smina} -r {input.rec} "
@@ -61,23 +61,37 @@ rule smina:
         "--num_modes {params.n_poses} "
         "--cpu {threads} > {log} "
 
-rule DockingSplit:
-    input:
-        lig="output/smina/{ligand}.pdb"
-    output:
-        "output/sep/{ligand}.pdb"
-    log:
-        "output/log/sep/{ligand}.log"
-    shell:
-        "obabel {input} -O {output} -m"
-
 rule DockingMerge:
     input:
         rec="input/receptor/AKR1D1.pdb",
-        lig="output/sep/{ligand}.pdb"
+        lig="output/smina/{ligand}.pdb"
     output:
         "output/poses/{ligand}.pdb"
     log:
         "output/log/poses/{ligand}.log"
     shell:
         "obabel -j -ipdb {input} -O {output}"
+
+rule Pdb2Mae:
+    input:
+        "output/poses/{ligand}.pdb"
+    output:
+        "output/Pdb2Mae/{ligand}.mae"
+    log:
+        "output/log/Pdb2Mae/{ligand}.log"
+    params:
+        schrodinger="$SCHRODINGER"
+    shell:
+        "{params.schrodinger}/utilities/structconvert -ipdb {input} -omae {output} && chmod 777 {output}"
+
+rule EvaluatePoses:
+    input:
+        "output/Pdb2Mae/{ligand}.mae"
+    output:
+        "output/EvaluatePoses/{ligand}.mae"
+    log:
+        "output/log/EvaluatePoses/{ligand}.log"
+    params:
+        schrodinger="$SCHRODINGER"
+    shell:
+        "{params.schrodinger}/run {input} {output} -a 'res.num 58' -hbond 1 -a 'res.num 120' -hbond 2 -m all -lig_asl 'res.num 900' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -TMPLAUNCHDIR -WAIT -NOJOBID > {log}"

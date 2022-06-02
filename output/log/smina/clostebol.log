@@ -28,5 +28,5 @@ mode |   affinity | dist from best mode
      | (kcal/mol) | rmsd l.b.| rmsd u.b.
 -----+------------+----------+----------
 1       46.4       0.000      0.000    
-Refine time 1.981
-Loop time 2.460
+Refine time 2.019
+Loop time 2.479
