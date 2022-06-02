@@ -6,42 +6,42 @@ print(ligands)
 
 rule target:
     input:
-        expand("output/EvaluatePoses/{ligand}.mae",ligand=ligands)
+        expand("output/EvaluatePoses/{ligand}.maegz",ligand=ligands)
 
-rule create_smi:
+rule CreateSmi:
     input:
         'input/compounds.csv'
     output:
-        expand("output/ligands/smi/{lig}.smi",lig=ligands)
+        expand("output/CreateSmi/{lig}.smi",lig=ligands)
     shell:
-        'src/create_smifiles.sh {input}'
+        'src/CreateSmiFiles.sh {input}'
 
-rule ligprep:
+rule LigPrep:
     input:
-        "output/ligands/smi/{ligand}.smi"
+        "output/CreateSmi/{ligand}.smi"
     output:
-        "output/ligands/prep/{ligand}.pdb"
+        "output/LigPrep/{ligand}.pdb"
     log:
-        "output/log/prep/{ligand}.log"
+        "output/LigPrep/{ligand}.log"
     params:
         schrodinger="$SCHRODINGER"
 
     shell:
         "{params.schrodinger}/ligprep -ismi {input} -osd {output} -g -ph 7.4 -pht 0.1 -epik -s 1 -t 1 -WAIT -NOJOBID > {log}"
 
-rule smina:
+rule Smina:
     input:
         rec="input/receptor/AKR1D1.pdb",
-        lig="output/ligands/prep/{ligand}.pdb"
+        lig="output/LigPrep/{ligand}.pdb"
     output:
-        "output/smina/{ligand}.pdb"
+        "output/Smina/{ligand}.pdb"
     log:
-        "output/log/smina/{ligand}.log"
+        "output/log/Smina/{ligand}.log"
     params:
         smina="src/smina.static",
-        center_x = -7.570,
-        center_y = -17.030,
-        center_z = 33.68,
+        center_x = 5.59,
+        center_y = -18.25,
+        center_z = 33.78,
         boxsize = 15,
         ex = 2,
         n_poses = 1,
@@ -64,19 +64,19 @@ rule smina:
 rule DockingMerge:
     input:
         rec="input/receptor/AKR1D1.pdb",
-        lig="output/smina/{ligand}.pdb"
+        lig="output/Smina/{ligand}.pdb"
     output:
-        "output/poses/{ligand}.pdb"
+        "output/DockingMerge/{ligand}.pdb"
     log:
-        "output/log/poses/{ligand}.log"
+        "output/log/DockingMerge/{ligand}.log"
     shell:
         "obabel -j -ipdb {input} -O {output}"
 
 rule Pdb2Mae:
     input:
-        "output/poses/{ligand}.pdb"
+        "output/DockingMerge/{ligand}.pdb"
     output:
-        "output/Pdb2Mae/{ligand}.mae"
+        "output/Pdb2Mae/{ligand}.maegz"
     log:
         "output/log/Pdb2Mae/{ligand}.log"
     params:
@@ -86,12 +86,12 @@ rule Pdb2Mae:
 
 rule EvaluatePoses:
     input:
-        "output/Pdb2Mae/{ligand}.mae"
+        "output/Pdb2Mae/{ligand}.maegz"
     output:
-        "output/EvaluatePoses/{ligand}.mae"
+        "output/EvaluatePoses/{ligand}.maegz"
     log:
         "output/log/EvaluatePoses/{ligand}.log"
     params:
         schrodinger="$SCHRODINGER"
     shell:
-        "{params.schrodinger}/run {input} {output} -a 'res.num 58' -hbond 1 -a 'res.num 120' -hbond 2 -m all -lig_asl 'res.num 900' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -TMPLAUNCHDIR -WAIT -NOJOBID > {log}"
+        "{params.schrodinger}/run {input} {output} -a 'res.num 58' -hbond 1 -a 'res.num 119' -hbond 2 -m all -lig_asl 'res.num 900' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -complex -WAIT -NOJOBID > {log}"

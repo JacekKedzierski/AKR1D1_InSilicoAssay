@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e5f25302-da34-48b5-868e-aea24b4ed1ca" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Snakefile" beforeDir="false" afterPath="$PROJECT_DIR$/Snakefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/receptor/AKR1D1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/input/receptor/AKR1D1.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/Pdb2Mae/clostebol.mae" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/Pdb2Mae/testosteorne.mae" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ligands/prep/clostebol.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ligands/prep/testosteorne.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ligands/smi/clostebol.smi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ligands/smi/ligand.smi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/ligands/smi/testosteorne.smi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/log/prep/clostebol.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/log/prep/testosteorne.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/log/smina/clostebol.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/log/smina/testosteorne.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/poses/clostebol.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/poses/testosteorne.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/smina/clostebol.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/smina/testosteorne.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/._create_smifiles.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/create_smifiles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateSmiFiles.sh" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="29xvuOl3gjoRvBX7ZKNFWWNmR4Z" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Volumes/Storage/Projects/SnakemakeTutorial/AKR1D1_InSilicoAssay&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e5f25302-da34-48b5-868e-aea24b4ed1ca" name="Changes" comment="" />
+      <created>1654067774107</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654067774107</updated>
+      <workItem from="1654067775962" duration="7905000" />
+      <workItem from="1654094306008" duration="1807000" />
+      <workItem from="1654166794779" duration="4900000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="Snakefile" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,1 @@
+$SCHRODINGER/ligprep -ismi output/ligands/smi/clostebol.smi -osd output/ligands/prep/clostebol.pdb -g -ph 7.4 -pht 0.1 -epik -s 1 -t 1 -WAIT -NOJOBID > output/log/prep/clostebol.log
