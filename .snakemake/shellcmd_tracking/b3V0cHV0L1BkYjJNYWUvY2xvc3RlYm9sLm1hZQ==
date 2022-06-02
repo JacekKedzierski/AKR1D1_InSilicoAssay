@@ -1,1 +1,0 @@
-$SCHRODINGER/utilities/structconvert -ipdb output/poses/clostebol.pdb -omae output/Pdb2Mae/clostebol.mae && chmod 777 output/Pdb2Mae/clostebol.mae

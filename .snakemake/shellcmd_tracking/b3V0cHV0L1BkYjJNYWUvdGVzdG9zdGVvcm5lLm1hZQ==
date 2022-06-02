@@ -1,1 +1,0 @@
-$SCHRODINGER/utilities/structconvert -ipdb output/poses/testosteorne.pdb -omae output/Pdb2Mae/testosteorne.mae && chmod 777 output/Pdb2Mae/testosteorne.mae

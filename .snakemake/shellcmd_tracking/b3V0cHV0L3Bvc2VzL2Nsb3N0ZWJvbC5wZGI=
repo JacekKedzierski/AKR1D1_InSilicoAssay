@@ -1,1 +1,0 @@
-obabel -j -ipdb input/receptor/AKR1D1.pdb output/smina/clostebol.pdb -O output/poses/clostebol.pdb
