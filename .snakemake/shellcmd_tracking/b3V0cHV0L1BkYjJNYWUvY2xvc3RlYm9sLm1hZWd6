@@ -1,1 +1,0 @@
-$SCHRODINGER/utilities/structconvert -ipdb output/DockingMerge/clostebol.pdb -omae output/Pdb2Mae/clostebol.maegz && chmod 777 output/Pdb2Mae/clostebol.maegz

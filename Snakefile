@@ -1,12 +1,12 @@
 import pandas as pd
-
-ligands = pd.read_csv('input/compounds.csv', sep=' ').ligand
+df = pd.read_csv('input/compounds.csv', sep=' ',header = None)
+ligands = df[df.columns[1]]
 
 print(ligands)
 
 rule target:
     input:
-        expand("output/EvaluatePoses/{ligand}.maegz",ligand=ligands)
+        expand("output/log/EvaluatePoses/{ligand}.log",ligand=ligands)
 
 rule CreateSmi:
     input:
@@ -88,10 +88,10 @@ rule EvaluatePoses:
     input:
         "output/Pdb2Mae/{ligand}.maegz"
     output:
-        "output/EvaluatePoses/{ligand}.maegz"
-    log:
         "output/log/EvaluatePoses/{ligand}.log"
+    log:
+        "output/EvaluatePoses/{ligand}.maegz"
     params:
         schrodinger="$SCHRODINGER"
     shell:
-        "{params.schrodinger}/run pose_filter.py {input} {output} -a 'res.num 57' -hbond 1 -a 'res.num 119' -hbond 2 -m all -lig_asl 'res.num 2' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -complex -WAIT -NOJOBID > {log}"
+        "{params.schrodinger}/run pose_filter.py {input} {log} -a 'res.num 57' -hbond 1 -a 'res.num 119' -hbond 2 -m all -lig_asl 'res.num 2' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -complex -WAIT -NOJOBID > {output}"
