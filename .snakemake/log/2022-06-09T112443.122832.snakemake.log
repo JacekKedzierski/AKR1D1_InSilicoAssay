@@ -1,0 +1,53 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 4
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count    min threads    max threads
+-------------  -------  -------------  -------------
+EvaluatePoses        2              1              1
+target               1              1              1
+total                3              1              1
+
+Select jobs to execute...
+
+[Thu Jun  9 11:24:43 2022]
+rule EvaluatePoses:
+    input: output/Pdb2Mae/clostebol.maegz
+    output: output/EvaluatePoses/clostebol.maegz
+    log: output/log/EvaluatePoses/clostebol.log
+    jobid: 7
+    wildcards: ligand=clostebol
+    resources: tmpdir=/var/folders/19/c2f3qzhd313_g4x22rw1xlcm0000gn/T
+
+
+[Thu Jun  9 11:24:43 2022]
+rule EvaluatePoses:
+    input: output/Pdb2Mae/testosteorne.maegz
+    output: output/EvaluatePoses/testosteorne.maegz
+    log: output/log/EvaluatePoses/testosteorne.log
+    jobid: 1
+    wildcards: ligand=testosteorne
+    resources: tmpdir=/var/folders/19/c2f3qzhd313_g4x22rw1xlcm0000gn/T
+
+[Thu Jun  9 11:24:44 2022]
+Error in rule EvaluatePoses:
+    jobid: 7
+    output: output/EvaluatePoses/clostebol.maegz
+    log: output/log/EvaluatePoses/clostebol.log (check log file(s) for error message)
+    shell:
+        $SCHRODINGER/run output/Pdb2Mae/clostebol.maegz output/EvaluatePoses/clostebol.maegz -a 'res.num 57' -hbond 1 -a 'res.num 119' -hbond 2 -m all -lig_asl 'res.num 2' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -complex -WAIT -NOJOBID > output/log/EvaluatePoses/clostebol.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Thu Jun  9 11:24:44 2022]
+Error in rule EvaluatePoses:
+    jobid: 1
+    output: output/EvaluatePoses/testosteorne.maegz
+    log: output/log/EvaluatePoses/testosteorne.log (check log file(s) for error message)
+    shell:
+        $SCHRODINGER/run output/Pdb2Mae/testosteorne.maegz output/EvaluatePoses/testosteorne.maegz -a 'res.num 57' -hbond 1 -a 'res.num 119' -hbond 2 -m all -lig_asl 'res.num 2' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -complex -WAIT -NOJOBID > output/log/EvaluatePoses/testosteorne.log
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Volumes/Storage/Projects/SnakemakeTutorial/AKR1D1_InSilicoAssay/.snakemake/log/2022-06-09T112443.122832.snakemake.log

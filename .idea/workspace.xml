@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5f25302-da34-48b5-868e-aea24b4ed1ca" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Snakefile" beforeDir="false" afterPath="$PROJECT_DIR$/Snakefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/receptor/AKR1D1.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/input/receptor/AKR1D1.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/Pdb2Mae/clostebol.mae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/Pdb2Mae/testosteorne.mae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ligands/prep/clostebol.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ligands/prep/testosteorne.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ligands/smi/clostebol.smi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ligands/smi/ligand.smi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ligands/smi/testosteorne.smi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/log/prep/clostebol.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/log/prep/testosteorne.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/log/smina/clostebol.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/log/smina/testosteorne.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/poses/clostebol.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/poses/testosteorne.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/smina/clostebol.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/smina/testosteorne.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/._create_smifiles.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/create_smifiles.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateSmiFiles.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +39,8 @@
       <updated>1654067774107</updated>
       <workItem from="1654067775962" duration="7905000" />
       <workItem from="1654094306008" duration="1807000" />
-      <workItem from="1654166794779" duration="4900000" />
+      <workItem from="1654166794779" duration="5114000" />
+      <workItem from="1654250113912" duration="872000" />
     </task>
     <servers />
   </component>
