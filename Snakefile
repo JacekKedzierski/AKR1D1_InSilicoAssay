@@ -61,6 +61,32 @@ rule Smina:
         "--num_modes {params.n_poses} "
         "--cpu {threads} > {log} "
 
+# rule Glide:
+#     input:
+#         grid="input/Receptor/AKR1D1.zip",
+#         lig="output/LigPrep/{lig}.mae"
+#     output:
+#         workdir="output/Glide/{lig}"
+#     params:
+#         tool="$SCHRODINGER",
+#         home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
+#     log: 
+#         "output/log/Glide/AKR1D1_{lig}.log"
+#     priority: 3
+#     threads: 22
+#     message: "AKR1D1 and compound {lig} threads: 8"
+#     shell:
+#         """
+#         echo "FORCEFIELD OPLS_2005" >> output/tmp_AKR1D1.in
+#         echo "GRIDFILE" {params.home}{input.grid} >> output/tmp_AKR1D1.in
+#         echo "LIGANDFILE" {params.home}{input.molecule} >> output/tmp_AKR1D1.in
+#         echo "PRECISION SP" >> output/tmp_AKR1D1.in
+
+#         mkdir -p {output.workdir}      
+#         cd {output.workdir}   
+#         {params.tool}/glide ../../output/tmp_AKR1D1.in -WAIT -HOST "localhost:8" -NJOBS 1          
+#         """
+
 rule DockingMerge:
     input:
         rec="input/receptor/AKR1D1.pdb",
