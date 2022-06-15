@@ -31,7 +31,7 @@ rule LigPrep:
 
 rule Smina:
     input:
-        rec="input/receptor/AKR1D1.pdb",
+        rec="input/Receptor/AKR1D1.pdb",
         lig="output/LigPrep/{ligand}.pdb"
     output:
         "output/Smina/{ligand}.pdb"
@@ -89,7 +89,7 @@ rule Smina:
 
 rule DockingMerge:
     input:
-        rec="input/receptor/AKR1D1.pdb",
+        rec="input/Receptor/AKR1D1.pdb",
         lig="output/Smina/{ligand}.pdb"
     output:
         "output/DockingMerge/{ligand}.pdb"
