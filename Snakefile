@@ -9,7 +9,8 @@ rule target:
         #expand("output/log/EvaluatePoses/{ligand}.log",ligand=ligands)
         #expand("output/Glide/{ligand}",ligand=ligands)
         #expand("output/log/EvaluatePoses/{ligand}.log",ligand=ligands)
-        expand("output/Glide/{ligand}",ligand=ligands)
+        #expand("output/Glide/{ligand}",ligand=ligands)
+        expand("output/log/EvaluatePoses/{ligand}.log", ligand=ligands)
 
 rule CreateSmi:
     input:
@@ -142,9 +143,9 @@ rule EvaluatePosesPv:
     input:
         "output/Glide/AKR1D1_pv.maegz/AKR1D1_pv.maegz"
     output:
-        "output/log/EvaluatePoses/{lig}.log"
+        "output/log/EvaluatePosesPv/{ligand}.log"
     log:
-        "output/EvaluatePoses/{lig}.maegz"
+        "output/EvaluatePosesPv/{ligand}.maegz"
     params:
         schrodinger="$SCHRODINGER",
         home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
