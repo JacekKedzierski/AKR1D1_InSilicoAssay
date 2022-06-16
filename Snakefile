@@ -149,4 +149,4 @@ rule EvaluatePosesPv:
         schrodinger="$SCHRODINGER",
         home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
     shell:
-        "{params.schrodinger}/run pose_filter.py {params.home}{input} {log} -a 'res.num 58' -hbond 1 -a 'res.num 120' -hbond 2 -m all -lig_asl 'res.num 2' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -WAIT -NOJOBID > {output}"
+        "{params.schrodinger}/run pose_filter.py {params.home}{input} {log} -a 'res.num 58' -hbond 1 -a 'res.num 120' -hbond 2 -m all -lig_asl 'res.num 900' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -WAIT -NOJOBID > {output}"
