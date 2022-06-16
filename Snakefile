@@ -4,25 +4,25 @@ ligands = df[df.columns[1]]
 
 print(ligands)
 
+wildcard_constraints:
+   ligands = '[a-zA-Z]'
+
 rule target:
     input:
-        #expand("output/log/EvaluatePoses/{ligand}.log",ligand=ligands)
-        #expand("output/Glide/{ligand}",ligand=ligands)
-        #expand("output/log/EvaluatePoses/{ligand}.log",ligand=ligands)
-        #expand("output/Glide/{ligand}",ligand=ligands)
-        expand("output/log/EvaluatePoses/{ligand}.log", ligand=ligands)
+        #expand("output/log/EvaluatePoses/{ligand}.log", ligand=ligands),
+        expand("output/log/EvaluatePosesPv/{ligand}.log", ligand=ligands)
 
 rule CreateSmi:
     input:
         'input/compounds.csv'
     output:
-        expand("output/CreateSmi/{ligand}.smi",ligand=ligands)
+        "output/CreateSmi/{ligand}.smi"
     shell:
         'src/CreateSmiFiles.sh {input}'
 
 rule LigPrepMae:
     input:
-        expand("output/CreateSmi/{ligand}.smi",ligand=ligands)
+        "output/CreateSmi/{ligand}.smi"
     output:
         "output/LigPrep/{ligand}.mae"
     log:
@@ -35,7 +35,7 @@ rule LigPrepMae:
 
 rule LigPrepPdb:
     input:
-        expand("output/CreateSmi/{ligand}.smi",ligand=ligands)
+        "output/CreateSmi/{ligand}.smi"
     output:
         "output/LigPrep/{ligand}.pdb"
     log:
@@ -49,7 +49,7 @@ rule LigPrepPdb:
 rule Smina:
     input:
         rec="input/Receptor/AKR1D1.pdb",
-        lig=expand("output/LigPrep/{ligand}.pdb",ligand=ligands)
+        lig="output/LigPrep/{ligand}.pdb"
     output:
         "output/Smina/{ligand}.pdb"
     log:
@@ -81,33 +81,32 @@ rule Smina:
 rule Glide:
     input:
         grid="input/Receptor/AKR1D1.zip",
-        ligandMae=expand("output/LigPrep/{ligand}.mae",ligand=ligands)
+        ligandMae="output/LigPrep/{ligand}.mae",
     output:
-        workdir="output/Glide/{ligand}"
+        workdir="output/Glide/{ligand}",
+        infile="output/{ligand}.in",
+        pose="output/Glide/{ligand}/{ligand}_pv.maegz"
     params:
         tool="$SCHRODINGER",
         home="/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/"
     log: 
-        "output/log/Glide/AKR1D1_{ligand}.log"
-    # priority: 3
-    # threads: 22
-    # message: "AKR1D1 and compound {liga} threads: 8"
+        "output/log/Glide/{ligand}.log"
     shell:
         """
-        echo "FORCEFIELD OPLS_2005" >> output/AKR1D1.in
-        echo "GRIDFILE" {params.home}{input.grid} >> output/AKR1D1.in
-        echo "LIGANDFILE" {params.home}{input.ligandMae} >> output/AKR1D1.in
-        echo "PRECISION SP" >> output/AKR1D1.in
+        echo "FORCEFIELD OPLS_2005" >> {output.infile}
+        echo "GRIDFILE" {params.home}{input.grid} >> {output.infile}
+        echo "LIGANDFILE" {params.home}{input.ligandMae} >> {output.infile}
+        echo "PRECISION SP" >> {output.infile}
 
         mkdir -p {output.workdir}      
         cd {output.workdir}   
-        {params.tool}/glide ../../AKR1D1.in -WAIT -HOST "localhost:8" -NJOBS 1          
+        {params.tool}/glide ../../../{output.infile} -WAIT -HOST "localhost:1" -NJOBS 1
         """
 
 rule DockingMerge:
     input:
         rec="input/Receptor/AKR1D1.pdb",
-        ligandPdb=expand("output/Smina/{ligand}.pdb",ligand=ligands)
+        ligandPdb="output/Smina/{ligand}.pdb"
     output:
         "output/DockingMerge/{ligand}.pdb"
     log:
@@ -141,7 +140,7 @@ rule EvaluatePoses:
 
 rule EvaluatePosesPv:
     input:
-        "output/Glide/AKR1D1_pv.maegz/AKR1D1_pv.maegz"
+        workdir="output/Glide/{ligand}/{ligand}_pv.maegz"
     output:
         "output/log/EvaluatePosesPv/{ligand}.log"
     log:
@@ -150,4 +149,4 @@ rule EvaluatePosesPv:
         schrodinger="$SCHRODINGER",
         home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
     shell:
-        "{params.schrodinger}/run pose_filter.py {params.home}{input} {log} -a 'res.num 57' -hbond 1 -a 'res.num 119' -hbond 2 -m all -lig_asl 'res.num 2' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -WAIT -NOJOBID > {output}"
+        "{params.schrodinger}/run pose_filter.py {params.home}{input} {log} -a 'res.num 58' -hbond 1 -a 'res.num 120' -hbond 2 -m all -lig_asl 'res.num 2' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -WAIT -NOJOBID > {output}"
