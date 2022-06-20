@@ -1,0 +1,1 @@
+$SCHRODINGER/run pv_convert.py -mode merge output/EvaluatePosesPv/CHEMBL278283.maegz > output/GlideMerge/CHEMBL278283-out_complex.maegz

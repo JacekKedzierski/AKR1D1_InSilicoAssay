@@ -1,0 +1,10 @@
+
+        echo "FORCEFIELD OPLS_2005" >> output/Glide/In/fexofenadine.in
+        echo "GRIDFILE" /mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/input/Receptor/AKR1D1.zip >> output/Glide/In/fexofenadine.in
+        echo "LIGANDFILE" /mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/output/LigPrep/fexofenadine.mae >> output/Glide/In/fexofenadine.in
+        echo "PRECISION SP" >> output/Glide/In/fexofenadine.in
+
+        mkdir -p output/Glide/fexofenadine      
+        cd output/Glide/fexofenadine   
+        $SCHRODINGER/glide ../../../output/Glide/In/fexofenadine.in -WAIT -HOST "localhost:1" -NJOBS 1
+        

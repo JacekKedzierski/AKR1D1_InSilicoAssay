@@ -1,0 +1,10 @@
+
+        echo "FORCEFIELD OPLS_2005" >> output/CHEMBL264757.in
+        echo "GRIDFILE" /mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/input/Receptor/AKR1D1.zip >> output/CHEMBL264757.in
+        echo "LIGANDFILE" /mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/output/LigPrep/CHEMBL264757.mae >> output/CHEMBL264757.in
+        echo "PRECISION SP" >> output/CHEMBL264757.in
+
+        mkdir -p output/Glide/CHEMBL264757      
+        cd output/Glide/CHEMBL264757   
+        $SCHRODINGER/glide ../../../output/CHEMBL264757.in -WAIT -HOST "localhost:1" -NJOBS 1
+        

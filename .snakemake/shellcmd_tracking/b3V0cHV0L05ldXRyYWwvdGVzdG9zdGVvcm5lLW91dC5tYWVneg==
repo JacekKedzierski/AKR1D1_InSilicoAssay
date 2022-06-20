@@ -1,0 +1,1 @@
+$SCHRODINGER/utilities/ligfilter output/LigPrep/testosteorne.mae -o output/Neutral/testosteorne-out.maegz -f input/Receptor/rules.lff -WAIT -NOJOBID

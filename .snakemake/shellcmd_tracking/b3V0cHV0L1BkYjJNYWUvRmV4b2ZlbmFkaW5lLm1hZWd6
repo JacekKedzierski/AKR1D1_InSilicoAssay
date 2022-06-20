@@ -1,0 +1,1 @@
+$SCHRODINGER/utilities/structconvert -ipdb output/DockingMerge/Fexofenadine.pdb -omae output/Pdb2Mae/Fexofenadine.maegz && chmod 777 output/Pdb2Mae/Fexofenadine.maegz

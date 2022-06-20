@@ -1,0 +1,10 @@
+
+        echo "FORCEFIELD OPLS_2005" >> input/Receptor/tmp_AKR1D1.in
+        echo "GRIDFILE" /mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/input/Receptor/AKR1D1.zip >> input/Receptor/tmp_AKR1D1.in
+        echo "LIGANDFILE" /mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/output/LigPrep/testosterone.maegz.mae >> input/Receptor/tmp_AKR1D1.in
+        echo "PRECISION SP" >> input/Receptor/tmp_AKR1D1.in
+
+        mkdir -p output/Glide/AKR1D1_testosterone.maegz      
+        cd output/Glide/AKR1D1_testosterone.maegz   
+        $SCHRODINGER/glide ../../../input/Receptor/tmp_AKR1D1.in -WAIT -HOST "localhost:8" -NJOBS 1          
+        

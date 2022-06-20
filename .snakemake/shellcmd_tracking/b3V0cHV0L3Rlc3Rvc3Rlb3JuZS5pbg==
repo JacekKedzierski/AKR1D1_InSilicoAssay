@@ -1,0 +1,10 @@
+
+        echo "FORCEFIELD OPLS_2005" >> output/testosteorne.in
+        echo "GRIDFILE" /mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/input/Receptor/AKR1D1.zip >> output/testosteorne.in
+        echo "LIGANDFILE" /mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/output/Neutral/testosteorne-out.mae >> output/testosteorne.in
+        echo "PRECISION SP" >> output/testosteorne.in
+
+        mkdir -p output/Glide/testosteorne      
+        cd output/Glide/testosteorne   
+        $SCHRODINGER/glide ../../../output/testosteorne.in -WAIT -HOST "localhost:1" -NJOBS 1
+        

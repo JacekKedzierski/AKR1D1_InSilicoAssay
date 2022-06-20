@@ -1,0 +1,1 @@
+obabel -j -ipdb input/Receptor/AKR1D1.pdb output/Smina/testosterone.pdb -O output/DockingMerge/testosterone.pdb

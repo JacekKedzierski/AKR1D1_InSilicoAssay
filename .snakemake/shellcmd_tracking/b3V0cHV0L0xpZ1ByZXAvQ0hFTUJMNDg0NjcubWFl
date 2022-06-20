@@ -1,0 +1,1 @@
+$SCHRODINGER/ligprep -ismi output/CreateSmi/CHEMBL48467.smi -osd output/LigPrep/CHEMBL48467.mae -g -ph 7.4 -pht 0.1 -epik -s 1 -t 1 -WAIT -NOJOBID > output/LigPrep/CHEMBL48467.log

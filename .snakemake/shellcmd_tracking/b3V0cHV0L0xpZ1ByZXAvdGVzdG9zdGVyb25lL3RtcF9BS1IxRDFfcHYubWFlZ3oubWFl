@@ -1,0 +1,1 @@
+$SCHRODINGER/ligprep -ismi output/CreateSmi/testosterone.smi -osd output/LigPrep/testosterone/tmp_AKR1D1_pv.maegz.mae -g -ph 7.4 -pht 0.1 -epik -s 1 -t 1 -WAIT -NOJOBID > log/LigPrep/testosterone/tmp_AKR1D1_pv.maegz.log

@@ -1,0 +1,1 @@
+$SCHRODINGER/utilities/structconvert -ipdb output/DockingMerge/testosterone.pdb -omae output/Pdb2Mae/testosterone.maegz && chmod 777 output/Pdb2Mae/testosterone.maegz

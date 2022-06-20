@@ -1,0 +1,5 @@
+#
+# Filter criteria
+#
+Num_negative_atoms                       == 0
+Num_positive_atoms                       == 0

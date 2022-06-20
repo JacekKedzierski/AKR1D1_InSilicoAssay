@@ -1,0 +1,1 @@
+obabel -j -ipdb input/Receptor/AKR1D1.pdb output/Smina/Fexofenadine.pdb -O output/DockingMerge/Fexofenadine.pdb
