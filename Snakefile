@@ -1,8 +1,9 @@
 import pandas as pd
-df = pd.read_csv('input/compounds.csv', sep=' ',header = None)
+import os
+cwd = os.getcwd()+"/"
+compounds="input/"+config["ligands"]
+df = pd.read_csv(compounds, sep=' ',header = None)
 ligands = df[df.columns[1]]
-
-print(ligands)
 
 wildcard_constraints:
    ligands = '[a-zA-Z]'
@@ -13,7 +14,7 @@ rule target:
 
 rule LigPrepMae:
     input:
-        "input/compounds.csv"
+        expand({compounds},compounds=config["ligands"])
     output:
         "output/LigPrep/compounds.mae"
     log:
@@ -45,7 +46,7 @@ rule Glide:
         pose="output/Glide/compounds_pv.maegz"
     params:
         tool="$SCHRODINGER",
-        home="/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/"
+        home=cwd
     log: 
         "output/log/Glide/compounds.log"
     shell:
@@ -69,7 +70,7 @@ rule EvaluatePosesPv:
         "output/log/EvaluatePosesPv/compounds.log"
     params:
         schrodinger="$SCHRODINGER",
-        home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
+        home=cwd
     shell:
         "{params.schrodinger}/run pose_filter.py {params.home}{input} {output} -a 'res.num 58' -hbond 1 -a 'res.num 120' -hbond 2 -m all -lig_asl 'SMARTS. [R]=O' -hbond_dist_max 2.5 -hbond_donor_angle 90.0 -hbond_acceptor_angle 60.0 -contact_dist_max 5.0 -ring_dist_max 5.0 -aromatic_dist_max 5.0 -WAIT -NOJOBID > {log}"
 
@@ -83,7 +84,7 @@ rule GlideDockingMergePv:
         "output/log/GlideDockingMergePv/compounds.log"
     params:
         schrodinger="$SCHRODINGER",
-        home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
+        home=cwd
     shell:
         """
         {params.schrodinger}/run pv_convert.py -m {input} > {log}
