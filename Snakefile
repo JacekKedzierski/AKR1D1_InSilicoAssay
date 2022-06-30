@@ -10,7 +10,7 @@ wildcard_constraints:
 
 rule target:
     input:
-        "output/log/HappyHB/compounds.log"
+        "output/log/HappyHB/Done.txt"
 
 rule LigPrepMae:
     input:
@@ -111,10 +111,10 @@ rule HappyHB:
     input:
         "output/log/MaeGz2Mae/compounds.log"
     output:
-        "output/log/HappyHB/compounds.log"
+        "output/log/HappyHB/Done.txt"
     params:
         home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
     shell:
         """
-        ./HappyHB.sh > {output}
+        ./HappyHB.sh
         """
