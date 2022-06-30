@@ -1,0 +1,4 @@
+
+        $SCHRODINGER/utilities/structconvert  -imae output/GlideDockingMerge/compounds-out_complex.maegz -opdb compounds-out_complex.pdb > output/log/MaeGz2Mae/compounds.log
+        cp *.pdb output/MaeGz2Mae/.
+        

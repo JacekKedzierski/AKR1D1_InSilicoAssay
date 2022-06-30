@@ -1,0 +1,1 @@
+$SCHRODINGER/utilities/ligfilter output/LigPrep/compounds.mae -o output/Neutral/compounds-out.maegz -f input/Receptor/rules.lff -WAIT -NOJOBID

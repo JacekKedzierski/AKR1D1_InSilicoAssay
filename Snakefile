@@ -10,7 +10,7 @@ wildcard_constraints:
 
 rule target:
     input:
-        expand("output/GlideDockingMerge/compounds-out_complex.maegz", ligand=ligands)
+        "output/log/HappyHB/compounds.log"
 
 rule LigPrepMae:
     input:
@@ -89,4 +89,32 @@ rule GlideDockingMergePv:
         """
         {params.schrodinger}/run pv_convert.py -m {input} > {log}
         cp {output.tmp} {output.end}
+        """
+rule MaeGz2Mae:
+    input:
+        "output/GlideDockingMerge/compounds-out_complex.maegz"
+    log:
+        tmp="compounds-out_complex.pdb",
+        end="output/MaeGz2Mae/compounds-out_complex.pdb"
+    output:
+        "output/log/MaeGz2Mae/compounds.log"
+    params:
+        schrodinger="$SCHRODINGER",
+        home=cwd
+    shell:
+        """
+        {params.schrodinger}/utilities/structconvert  -imae {input} -opdb {log.tmp} > {output}
+        cp *.pdb output/MaeGz2Mae/.
+        """
+
+rule HappyHB:
+    input:
+        "output/log/MaeGz2Mae/compounds.log"
+    output:
+        "output/log/HappyHB/compounds.log"
+    params:
+        home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
+    shell:
+        """
+        ./HappyHB.sh > {output}
         """

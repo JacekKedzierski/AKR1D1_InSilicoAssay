@@ -1,0 +1,1 @@
+$SCHRODINGER/ligprep -icsv input/compounds.csv -osd output/LigPrep/compounds.mae -g -ph 7.4 -pht 0.1 -epik -s 1 -t 1 -WAIT -NOJOBID > output/LigPrep/compounds.log
