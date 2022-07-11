@@ -90,31 +90,32 @@ rule GlideDockingMergePv:
         {params.schrodinger}/run pv_convert.py -m {input} > {log}
         cp {output.tmp} {output.end}
         """
-rule MaeGz2Mae:
+rule MaeGz2Pdb:
     input:
         "output/GlideDockingMerge/compounds-out_complex.maegz"
     log:
         tmp="compounds-out_complex.pdb",
-        end="output/MaeGz2Mae/compounds-out_complex.pdb"
+        end="output/MaeGz2Pdb/compounds-out_complex.pdb"
     output:
-        "output/log/MaeGz2Mae/compounds.log"
+        "output/log/MaeGz2Pdb/compounds.log"
     params:
         schrodinger="$SCHRODINGER",
         home=cwd
     shell:
         """
         {params.schrodinger}/utilities/structconvert  -imae {input} -opdb {log.tmp} > {output}
-        cp *.pdb output/MaeGz2Mae/.
+        mv *.pdb output/MaeGz2Pdb/.
         """
 
 rule HappyHB:
     input:
-        "output/log/MaeGz2Mae/compounds.log"
+        "output/log/MaeGz2Pdb/compounds.log"
     output:
         "output/log/HappyHB/Done.txt"
     params:
         home = '/mnt/jacek/jkedzierski/Documents/Projects/AKR1D1/AKR1D1_InSilicoAssay/'
     shell:
         """
-        ./HappyHB.sh
+        python3 src/HappyLoop.py --directory output/MaeGz2Pdb
+        echo Done > output/log/HappyHB/Done.txt
         """
