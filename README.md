@@ -4,5 +4,5 @@ Molecules should be supplied in the SMILES format in the input folder
 
 Start:
 conda activate AKR1D1_InSilicoAssay
-export SCHRODINGER=/opt/schrodinger2020-2; export LM_LICENSE_FILE=27000@131.152.94.126
+export SCHRODINGER=/opt/schrodinger2020-2; export LM_LICENSE_FILE=
 nohup snakemake --cores 1 --config ligands=compounds.csv&
