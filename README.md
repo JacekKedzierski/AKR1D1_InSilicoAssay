@@ -54,7 +54,3 @@ For more information and troubleshooting, please refer to the documentation or c
 **References:**
 
 https://www.sciencedirect.com/science/article/pii/S0378427423002205?via%3Dihub
-
----
-
-Feel free to add more details, references, or sections as needed to provide comprehensive information about your AKR1D1 InSilicoAssay tool. This README should help users understand how to set up and use the tool for their virtual screening needs.
